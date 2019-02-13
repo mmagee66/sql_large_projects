@@ -34,10 +34,72 @@ INSERT INTO tbl_books
 	('The Body', 'Pearson')
 	;
 
+	CREATE TABLE tbl_publisher (
+	publisher_name VARCHAR(30) PRIMARY KEY NOT NULL,
+	publisher_address VARCHAR(50),
+	publisher_phone VARCHAR(20)
+	)
+
+	INSERT INTO tbl_publisher
+	(publisher_name, publisher_address, publisher_phone)
+	VALUES
+	('Picador USA','78 Yellow Rd', '321-987-5689'),
+	('Pearson','56 Jerry Ln', '654-987-5896'),
+	('RELX', '74 Harper Dr', '654-987-6548'),
+	('Thomson Reuters','67 FRuit Stand Ave', '456-456-4569' ),
+	('Bertelsmann', '98 Skyway Hwy', '325-365-3657' ),
+	('Wolters Kluwer', '98 Book Dr', '589-589-5632' ),
+	('Grupo Planeta', '365 Cliffy Rd', '456-965-5896'),
+	('Wiley', '67 Clifford Way', '654-654-7865' ),
+	('HarperCollins', '47 Bluegrass Ln', '456-456-9624' ),
+	('Scholastic', '36 Mandolin Dr', '236-258-9632')
+	;
+
+	CREATE TABLE tbl_branch (
+		branch_BranchID INT PRIMARY KEY NOT NULL IDENTITY (5000,1),
+		branch_name VARCHAR(30) NOT NULL,
+		branch_address VARCHAR(50) NOT NULL
+		)
+
+	INSERT INTO tbl_branch
+	(branch_name, branch_address)
+	VALUES
+	('Central', '456 Canyon Rd'),
+	('Sharpstown', '12 5th Ave')
+	;
+
+	INSERT INTO tbl_branch
+	(branch_name, branch_address)
+	VALUES
+	('East', '78 Oceanside Dr'),
+	('Mountain Side', '689 Starry Rd')
+	;
+
 	INSERT INTO tbl_books
 	(books_Title, books_PublisherName)
 	VALUES
-	('The Green MIle', 'Pearson');
+	('The Green Mile', 'Pearson');
+
+	CREATE TABLE tbl_Borrower (
+		borrower_CardNo INT PRIMARY KEY NOT NULL IDENTITY (3000,1),
+		borrwer_name VARCHAR(30) NOT NULL,
+		borrower_address VARCHAR (50),
+		borrower_phone VARCHAR (20)
+		)
+
+	INSERT INTO tbl_Borrower
+	(borrwer_name, borrower_address, borrower_phone)
+	VALUES
+	('Jacquie Hill', '7 Yellow Ave', '987-654-3215'),
+	('Finn Tree', '4 Blue St', '654-659-6987'),
+	('Pepper Plant', '45 Sunset Blvd', '321-654-6598'),
+	('Frank Forest', '98 Picnic Way', '456-456-5263'),
+	('Xander Waterfall', '13 Martini Ave', '753-852-9510'),
+	('Basil Cottonwood', '32 Willow Way', '256-624-9875'),
+	('Shannon Shade', '67 Sunny St', '789-425-6574'),
+	('Randy River', '98 Canoe Alley', '665-987-9632')
+	;
+
 
 	CREATE TABLE tbl_authors (
 		authors_BookID INT NOT NULL CONSTRAINT fk_BookID FOREIGN KEY REFERENCES tbl_books(books_BookID) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -76,25 +138,7 @@ INSERT INTO tbl_books
 	VALUES
 	(1021, 'King');
 
-	CREATE TABLE tbl_branch (
-		branch_BranchID INT PRIMARY KEY NOT NULL IDENTITY (5000,1),
-		branch_name VARCHAR(30) NOT NULL,
-		branch_address VARCHAR(50) NOT NULL
-		)
-
-	INSERT INTO tbl_branch
-	(branch_name, branch_address)
-	VALUES
-	('Central', '456 Canyon Rd'),
-	('Sharpstown', '12 5th Ave')
-	;
-
-	INSERT INTO tbl_branch
-	(branch_name, branch_address)
-	VALUES
-	('East', '78 Oceanside Dr'),
-	('Mountain Side', '689 Starry Rd')
-	;
+	
 
 	CREATE TABLE tbl_copies (
 		copies_BookID INT NOT NULL CONSTRAINT fk_copies_BookID FOREIGN KEY REFERENCES tbl_books(books_BookID) ON UPDATE CASCADE ON DELETE CASCADE,
@@ -199,25 +243,6 @@ INSERT INTO tbl_books
 	VALUES
 	(1021, 5000, 1);
 
-	CREATE TABLE tbl_Borrower (
-		borrower_CardNo INT PRIMARY KEY NOT NULL IDENTITY (3000,1),
-		borrwer_name VARCHAR(30) NOT NULL,
-		borrower_address VARCHAR (50),
-		borrower_phone VARCHAR (20)
-		)
-
-	INSERT INTO tbl_Borrower
-	(borrwer_name, borrower_address, borrower_phone)
-	VALUES
-	('Jacquie Hill', '7 Yellow Ave', '987-654-3215'),
-	('Finn Tree', '4 Blue St', '654-659-6987'),
-	('Pepper Plant', '45 Sunset Blvd', '321-654-6598'),
-	('Frank Forest', '98 Picnic Way', '456-456-5263'),
-	('Xander Waterfall', '13 Martini Ave', '753-852-9510'),
-	('Basil Cottonwood', '32 Willow Way', '256-624-9875'),
-	('Shannon Shade', '67 Sunny St', '789-425-6574'),
-	('Randy River', '98 Canoe Alley', '665-987-9632')
-	;
 
 
 	CREATE TABLE tbl_loans (
@@ -283,26 +308,7 @@ INSERT INTO tbl_books
 	(1013, 5003, 3005, '2019-01-01', '2019-03-15'),
 	(1014, 5000, 3005, '2019-01-01', '2019-03-15');
 
-	CREATE TABLE tbl_publisher (
-	publisher_name VARCHAR(30) PRIMARY KEY NOT NULL,
-	publisher_address VARCHAR(50),
-	publisher_phone VARCHAR(20)
-	)
-
-	INSERT INTO tbl_publisher
-	(publisher_name, publisher_address, publisher_phone)
-	VALUES
-	('Picador USA','78 Yellow Rd', '321-987-5689'),
-	('Pearson','56 Jerry Ln', '654-987-5896'),
-	('RELX', '74 Harper Dr', '654-987-6548'),
-	('Thomson Reuters','67 FRuit Stand Ave', '456-456-4569' ),
-	('Bertelsmann', '98 Skyway Hwy', '325-365-3657' ),
-	('Wolters Kluwer', '98 Book Dr', '589-589-5632' ),
-	('Grupo Planeta', '365 Cliffy Rd', '456-965-5896'),
-	('Wiley', '67 Clifford Way', '654-654-7865' ),
-	('HarperCollins', '47 Bluegrass Ln', '456-456-9624' ),
-	('Shcolastic', '36 Mandolin Dr', '236-258-9632')
-	;
+	
 
 
 	
