@@ -55,6 +55,11 @@ INSERT INTO tbl_books
 	('Scholastic', '36 Mandolin Dr', '236-258-9632')
 	;
 
+	INSERT INTO tbl_books
+	(books_Title, books_PublisherName)
+	VALUES
+	('The Green Mile', 'Pearson');
+
 	CREATE TABLE tbl_branch (
 		branch_BranchID INT PRIMARY KEY NOT NULL IDENTITY (5000,1),
 		branch_name VARCHAR(30) NOT NULL,
@@ -75,10 +80,7 @@ INSERT INTO tbl_books
 	('Mountain Side', '689 Starry Rd')
 	;
 
-	INSERT INTO tbl_books
-	(books_Title, books_PublisherName)
-	VALUES
-	('The Green Mile', 'Pearson');
+	
 
 	CREATE TABLE tbl_Borrower (
 		borrower_CardNo INT PRIMARY KEY NOT NULL IDENTITY (3000,1),
